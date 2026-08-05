@@ -3,16 +3,29 @@ tag: user.tmux
 
 mux: "tmux "
 
-#session management
+# session management
+
 mux new session: insert("tmux new ")
+
 mux sessions:
     key(ctrl-b)
     key(s)
+mux list sessions: insert("tmux list-sessions ")
+
+mux attach: insert("tmux attach ")
+mux attach session: insert("tmux attach -t ")
+mux detach:
+    key(ctrl-b)
+    key(d)
+
 mux name session:
     key(ctrl-b)
     key($)
+
 mux kill session: insert("tmux kill-session -t ")
-#window management
+mux kill server: insert("tmux kill-server ")
+
+# window management
 mux new window:
     key(ctrl-b)
     key(c)
@@ -31,7 +44,8 @@ mux rename window:
 mux close window:
     key(ctrl-b)
     key(&)
-#pane management
+
+# pane management
 mux split horizontal:
     key(ctrl-b)
     key(%)
@@ -47,7 +61,8 @@ mux move <user.arrow_key>:
 mux close pane:
     key(ctrl-b)
     key(x)
-#Say a number right after this command, to switch to pane
+
+# Say a number right after this command, to switch to pane
 mux pane numbers:
     key(ctrl-b)
     key(q)
